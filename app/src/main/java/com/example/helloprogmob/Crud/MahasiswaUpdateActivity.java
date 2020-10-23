@@ -33,28 +33,28 @@ public class MahasiswaUpdateActivity extends AppCompatActivity {
         setContentView(R.layout.activity_mahasiswa_update);
 
 
-        final EditText edNimYangDicari = (EditText)findViewById(R.id.editTextInput);
-        final EditText edNamaBaru = (EditText)findViewById(R.id.editTextInput);
-        final EditText edNimBaru = (EditText)findViewById(R.id.editTextInput);
-        final EditText edAlamatBaru = (EditText)findViewById(R.id.editTextInput);
-        final EditText edEmailBaru = (EditText)findViewById(R.id.editTextInput);
+        final EditText edNimYgAkanDicari = (EditText)findViewById(R.id.editTextInput);
+        final EditText edNamaBru = (EditText)findViewById(R.id.editTextInput);
+        final EditText edNimBru = (EditText)findViewById(R.id.editTextInput);
+        final EditText edAlmtBru = (EditText)findViewById(R.id.editTextInput);
+        final EditText edEmailBru = (EditText)findViewById(R.id.editTextInput);
         Button btnUbah = (Button)findViewById(R.id.buttonUbahMhs);
         pd = new ProgressDialog(MahasiswaUpdateActivity.this);
 
         btnUbah.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                pd.setTitle("mohon menunggu");
+                pd.setTitle("Please wait..");
                 pd.show();
 
                 GetDataService service = RetrofitClientInstance.getRetrofitInstance().create(GetDataService.class);
                 Call<DefaultResult> call = service.update_mhs(
-                        edNimYangDicari.getText().toString(),
-                        edNamaBaru.getText().toString(),
-                        edNimBaru.getText().toString(),
-                        edAlamatBaru.getText().toString(),
-                        edEmailBaru.getText().toString(),
-                        "Kosongkan Saja disini dirandom sistem"
+                        edNimYgAkanDicari.getText().toString(),
+                        edNamaBru.getText().toString(),
+                        edNimBru.getText().toString(),
+                        edAlmtBru.getText().toString(),
+                        edEmailBru.getText().toString(),
+                        "Kosongkan Saja akan terisi di random"
 
                 );
 
@@ -64,13 +64,13 @@ public class MahasiswaUpdateActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<DefaultResult> call, Response<DefaultResult> response) {
                         pd.dismiss();
-                        Toast.makeText( MahasiswaUpdateActivity.this, "DATA BERHASIL DITambah",Toast.LENGTH_LONG).show();
+                        Toast.makeText( MahasiswaUpdateActivity.this, "Data Sudah Ditambah",Toast.LENGTH_LONG).show();
                     }
 
                     @Override
                     public void onFailure(Call<DefaultResult> call, Throwable t) {
                         pd.dismiss();
-                        Toast.makeText(MahasiswaUpdateActivity.this, "GAGAL", Toast.LENGTH_LONG).show();
+                        Toast.makeText(MahasiswaUpdateActivity.this, "Data Tidak Terupdate", Toast.LENGTH_LONG).show();
 
                     }
                 });

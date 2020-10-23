@@ -26,20 +26,20 @@ public class HapusMhsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hapus_mhs);
-        final EditText edNimYangAkanDicari = (EditText)findViewById(R.id.editTextInput);
+        final EditText edNimYgAkanDicari = (EditText)findViewById(R.id.editTextInput);
         Button btnHapus = (Button)findViewById(R.id.buttonHapusMhs);
         pd = new ProgressDialog(HapusMhsActivity.this);
 
         btnHapus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                pd.setTitle("mohon menunggu");
+                pd.setTitle("S A B A R !");
                 pd.show();
 
                 GetDataService service = RetrofitClientInstance.getRetrofitInstance().create(GetDataService.class);
                 Call<DefaultResult> call = service.delete_mhs(
-                        edNimYangAkanDicari.getText().toString(),
-                        "Kosongkan Saja disini dirandom sistem"
+                        edNimYgAkanDicari.getText().toString(),
+                        "Kosongkan Saja nanti akan terisi di random sistem"
 
 
                 );
@@ -47,13 +47,13 @@ public class HapusMhsActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<DefaultResult> call, Response<DefaultResult> response) {
                         pd.dismiss();
-                        Toast.makeText( HapusMhsActivity.this, "DATA BERHASIL DIHAPUS",Toast.LENGTH_LONG).show();
+                        Toast.makeText( HapusMhsActivity.this, "Data Sudah Dihapus :)",Toast.LENGTH_LONG).show();
                     }
 
                     @Override
                     public void onFailure(Call<DefaultResult> call, Throwable t) {
                         pd.dismiss();
-                        Toast.makeText(HapusMhsActivity.this, "GAGAL", Toast.LENGTH_LONG).show();
+                        Toast.makeText(HapusMhsActivity.this, "Data Tidak Bisa dihapus :(", Toast.LENGTH_LONG).show();
 
                     }
                 });

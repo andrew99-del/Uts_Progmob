@@ -1,6 +1,4 @@
-package com.example.helloprogmob.Crud;
-
-import androidx.appcompat.app.AppCompatActivity;
+package ukdw.com.progmob_2020.Crud;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
@@ -9,35 +7,35 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.helloprogmob.Model.DefaultResult;
-import com.example.helloprogmob.Network.GetDataService;
-import com.example.helloprogmob.Network.RetrofitClientInstance;
-import com.example.helloprogmob.R;
+import androidx.appcompat.app.AppCompatActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import ukdw.com.progmob_2020.Model.DefaultResult;
+import ukdw.com.progmob_2020.Network.GetDataService;
+import ukdw.com.progmob_2020.Network.RetrofitClientInstance;
+import ukdw.com.progmob_2020.R;
 
 public class MahasiswaAddActivity extends AppCompatActivity {
-
     ProgressDialog pd;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void onCreate(Bundle saveInstanceState) {
+        super.onCreate(saveInstanceState);
         setContentView(R.layout.activity_mahasiswa_add);
 
-        final EditText edNama = (EditText)findViewById(R.id.editTextInput);
-        final EditText edNim = (EditText)findViewById(R.id.editTextInput);
-        final EditText edAlamat = (EditText)findViewById(R.id.editTextInput);
-        final EditText edEmail = (EditText)findViewById(R.id.editTextInput);
-        Button btnSimpan = (Button)findViewById(R.id.buttonSimpanMhs);
+        final EditText edNama = (EditText)findViewById(R.id.txtNama);
+        final EditText edNim = (EditText)findViewById(R.id.txtNim);
+        final EditText edAlamat = (EditText)findViewById(R.id.txtAlamat);
+        final EditText edEmail = (EditText)findViewById(R.id.txtEmail);
+        Button btnSimpan = (Button)findViewById(R.id.buttonSimpan);
         pd = new ProgressDialog(MahasiswaAddActivity.this);
 
         btnSimpan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                pd.setTitle("mohon bersabar ini ujian");
+                pd.setTitle("Mohon Menunggu");
                 pd.show();
 
                 GetDataService service = RetrofitClientInstance.getRetrofitInstance().create(GetDataService.class);
@@ -46,31 +44,24 @@ public class MahasiswaAddActivity extends AppCompatActivity {
                         edNim.getText().toString(),
                         edAlamat.getText().toString(),
                         edEmail.getText().toString(),
-                        "Kosongkan Saja disini dirandom sistem",
-                        "72170093"
-
-
-
+                        "kosongkan saja diisi sembarang karena dirandom sistem",
+                        "72170099"//diisi nim masing-masing
                 );
+
                 call.enqueue(new Callback<DefaultResult>() {
                     @Override
                     public void onResponse(Call<DefaultResult> call, Response<DefaultResult> response) {
                         pd.dismiss();
-                        Toast.makeText( MahasiswaAddActivity.this, "Data sudah disimpan :)",Toast.LENGTH_LONG).show();
+                        Toast.makeText(MahasiswaAddActivity.this, "Data Berhasil Disimpan", Toast.LENGTH_LONG).show();
                     }
 
                     @Override
                     public void onFailure(Call<DefaultResult> call, Throwable t) {
                         pd.dismiss();
-                        Toast.makeText(MahasiswaAddActivity.this, "Data tidak bisa di simpan :(", Toast.LENGTH_LONG).show();
-
+                        Toast.makeText(MahasiswaAddActivity.this, "gagal", Toast.LENGTH_LONG);
                     }
                 });
             }
         });
-
-
-
-
     }
 }

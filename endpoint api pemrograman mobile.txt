@@ -1,0 +1,271 @@
+//api
+//login
+[POST]
+api/progmob/login
+[
+    {
+        "id": "1",
+        "nama": "Administrator KRS",
+        "nimnik": "72160000",
+        "email": "admin@staff.ukdw.ac.id",
+        "password": "progmob",
+        "is_admin": "1"
+    }
+]
+required parameters: nimnik,password
+
+//dosen
+[GET]
+api/progmob/dosen/{nim_progmob}
+[
+    {
+        "id": 1,
+        "nama": "Argo",
+        "nidn": "0516118902",
+        "alamat": "Godean",
+        "email": "argo@staff.ukdw.ac.id",
+        "gelar": "S.T., M.Eng",
+        "foto": "7216002-2019-11-02.jpg"
+    },
+    {
+        "id": 2,
+        "nama": "Halim Budi Santosa",
+        "nidn": "0516118903",
+        "alamat": "Giwangan",
+        "email": "hbudi@staff.ukdw.ac.id",
+        "gelar": "S.T., M.T.,",
+        "foto": ""
+    }
+]
+
+[GET]
+api/progmob/dosen/{nim_progmob}/{nidn}
+[
+    {
+        "id": 1,
+        "nama": "Argo",
+        "nidn": "0516118902",
+        "alamat": "Godean",
+        "email": "argo@staff.ukdw.ac.id",
+        "gelar": "S.T., M.Eng",
+        "foto": "7216002-2019-11-02.jpg"
+    }
+]
+
+[POST]
+api/progmob/dosen/create
+{"status":"ok"}
+required parameters: nama,nidn,alamat,email,gelar,foto,nim_progmob
+
+[POST]
+api/progmob/dosen/createfoto
+{"status":"ok"}
+required parameters: nama,nidn,alamat,email,gelar,foto,nim_progmob
+
+[POST]
+api/progmob/dosen/update
+{"status":"ok"}
+required parameters: id,nama,nidn,alamat,email,gelar,foto,nim_progmob,nidn_cari
+
+[POST]
+api/progmob/dosen/updatewithfoto
+{"status":"ok"}
+required parameters: id,nama,nidn,alamat,email,gelar,foto,nim_progmob
+
+[POST]
+api/progmob/dosen/delete
+{"status":"ok"}
+required parameters: nidn,nim_progmob
+
+//mhs
+[GET]
+api/progmob/mhs/{nim_progmob}
+[
+    {
+        "id": 1,
+        "nama": "Reinald",
+        "nim": "72150001",
+        "alamat": "Babarsari",
+        "email": "reinald@si.ukdw.ac.id",
+        "foto": "Yes"
+    },
+	{
+        "id": 2,
+        "nama": "Salsa",
+        "nim": "72150002",
+        "alamat": "Babarsari",
+        "email": "salsa@si.ukdw.ac.id",
+        "foto": "Yes"
+    }
+]
+
+[GET]
+api/progmob/mhs/{nim_progmob}/{nim_mhs}
+[
+    {
+        "id": 1,
+        "nama": "Reinald",
+        "nim": "72150001",
+        "alamat": "Babarsari",
+        "email": "reinald@si.ukdw.ac.id",
+        "foto": "Yes"
+    }
+]
+
+[POST]
+api/progmob/mhs/create
+{"status":"ok"}
+required parameters: nama,nim,alamat,email,foto,nim_progmob
+
+[POST]
+api/progmob/mhs/update
+{"status":"ok"}
+required parameters: nama,nim,nim_cari,alamat,email,foto,nim_progmob
+
+[POST]
+api/progmob/mhs/delete
+{"status":"ok"}
+required parameters: nim,nim_progmob
+
+//matkul
+[GET]
+api/progmob/matkul/{nim_progmob}
+[
+    {
+        "id": 1,
+        "kode": "SI1234",
+        "nama": "Algoritma",
+        "hari": 1,
+        "sesi": 3,
+        "sks": 3
+    },
+    {
+        "id": 2,
+        "kode": "SI2234",
+        "nama": "Jaringan Komputer",
+        "hari": 1,
+        "sesi": 3,
+        "sks": 3
+    }
+]
+
+[GET]
+api/progmob/matkul/{nim_progmob}/{kode}
+[
+    {
+        "id": 1,
+        "kode": "SI1234",
+        "nama": "Algoritma",
+        "hari": 1,
+        "sesi": 3,
+        "sks": 3
+    }
+]
+
+[POST]
+api/progmob/matkul/create
+{"status":"ok"}
+required parameters: nama,nim_progmob,kode,hari,sesi,sks
+
+[POST]
+api/progmob/matkul/update
+{"status":"ok"}
+required parameters: nama,nim_progmob,kode,hari,sesi,sks,kode_cari
+
+[POST]
+api/progmob/matkul/delete
+{"status":"ok"}
+required parameters: kode,nim_progmob
+
+//jadwal
+api/progmob/jadwal/{nim_progmob}
+[
+    {
+        "id": 1,
+        "matkul": "Algoritma",
+        "dosen": "Argo",
+        "nidn": "0516118902",
+        "hari": 1,
+        "sesi": 3,
+        "sks": 3
+    },
+	{
+        "id": 2,
+        "matkul": "Jaringan Komputer",
+        "dosen": "Halim",
+        "nidn": "0516118902",
+        "hari": 1,
+        "sesi": 3,
+        "sks": 3
+    }
+]
+
+api/progmob/jadwaldosen/{nim_progmob}/{id_dosen}
+[
+    {
+        "id": 1,
+        "matkul": "Algoritma",
+        "dosen": "Argo",
+        "nidn": "0516118902",
+        "hari": 1,
+        "sesi": 3,
+        "sks": 3
+    }
+]
+
+api/progmob/jadwal/create
+{"status":"ok"}
+required parameters: id,nama,nim_progmob,kode,hari,sesi,sks
+
+api/progmob/jadwal/update
+{"status":"ok"}
+required parameters: id,id_dosen,id_matkul,nim_progmob
+
+api/progmob/jadwal/delete
+{"status":"ok"}
+required parameters: id,nim_progmob
+
+//krs
+api/progmob/krs/{nim_progmob}
+[
+    {
+        "id": 1,
+        "kode": "SI1234",
+        "nama_matkul": "Algoritma",
+        "nidn": "0516118902",
+        "dosen": "Argo",
+        "gelar": "S.T., M.Eng",
+        "hari": 1,
+        "sesi": 3,
+        "sks": 3,
+        "mhs": "Reinald",
+        "nim": "72150001"
+    }
+]
+
+api/progmob/krs/{nim_progmob}/{nim_mhs}
+[
+    {
+        "id": 1,
+        "kode": "SI1234",
+        "nama_matkul": "Algoritma",
+        "nidn": "0516118902",
+        "dosen": "Argo",
+        "gelar": "S.T., M.Eng",
+        "hari": 1,
+        "sesi": 3,
+        "sks": 3
+    }
+]
+
+api/progmob/krs/create
+{"status":"ok"}
+required parameters: id_jadwal,id_mhs,nim_progmob
+
+api/progmob/krs/update
+{"status":"ok"}
+required parameters: id,id_jadwal,id_mhs,nim_progmob
+
+api/progmob/krs/delete
+{"status":"ok"}
+required parameters: id,nim_progmob
