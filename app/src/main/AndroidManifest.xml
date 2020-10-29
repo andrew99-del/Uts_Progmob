@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.helloprogmob">
+    package="com.example.uts_progmob">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -12,21 +13,29 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Crud.MahasiswaUpdateActivity"></activity>
-        <activity android:name=".Crud.MahasiswaGetAllActivity" />
-        <activity android:name=".Crud.MahasiswaAddActivity" />
-        <activity
-            android:name=".Crud.MainMhsActivity"
-            android:label="Menu CRUD Mahasiswa">
+        <activity android:name=".EditMahasiswa"></activity>
+        <activity android:name=".EditDosen" />
+        <activity android:name=".DataAdminActivity" />
+        <activity android:name=".LihatDosen" />
+        <activity android:name=".LihatKelas" />
+        <activity android:name=".LihatKrs" />
+        <activity android:name=".LihatDataMhs" />
+        <activity android:name=".CrudKrs" />
+        <activity android:name=".CrudMatkul" />
+        <activity android:name=".DataDosen" />
+        <activity android:name=".RecycleView" />
+        <activity android:name=".LihatMatkul" />
+        <activity android:name=".MenuAdmin" />
+        <activity android:name=".MenuMahasiswa" />
+        <activity android:name=".DataMahasiswa" />
+        <activity android:name=".LoginScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Pertemuan2.RecylerActivity" />
-        <activity android:name=".Pertemuan2.ListActivity" />
-        <activity android:name=".HelpActivity" />
+        <activity android:name=".SpalshScreen" />
         <activity android:name=".MainActivity" />
     </application>
 
